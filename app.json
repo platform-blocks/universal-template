@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Platform Blocks Universal",
+    "slug": "platform-blocks-universal",
+    "version": "1.0.0",
+    "scheme": "platformblocksuniversal",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-audio"
+    ]
+  }
+}

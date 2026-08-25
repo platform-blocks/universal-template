@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Weekly freshness check — resolves the newest in-range dependencies so the
+    # template can't silently rot against new @platform-blocks/ui releases.
+    - cron: '0 6 * * 1'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Drop lockfile for freshness run
+        if: github.event_name == 'schedule'
+        run: rm -f package-lock.json
+      - run: npm install
+      - run: npm run lint
+      # tsc needs a deeper stack than Node's default for expo-router's
+      # vendored navigation types under TypeScript 6 — npm run typecheck
+      # wraps it with --stack-size.
+      - run: npm run typecheck
+      - run: npm test -- --ci
+      - run: npx expo export --platform web
