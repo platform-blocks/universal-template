@@ -6,7 +6,7 @@ on:
   pull_request:
   schedule:
     # Weekly freshness check — resolves the newest in-range dependencies so the
-    # template can't silently rot against new @platform-blocks/ui releases.
+    # template can't silently rot against new @plocks/ui releases.
     - cron: '0 6 * * 1'
 
 jobs:
@@ -17,9 +17,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Drop lockfile for freshness run
-        if: github.event_name == 'schedule'
-        run: rm -f package-lock.json
       - run: npm install
       - run: npm run lint
       # tsc needs a deeper stack than Node's default for expo-router's

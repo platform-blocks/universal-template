@@ -1,4 +1,4 @@
-import { Card, Column, Flex, Icon, Text, useTheme } from '@platform-blocks/ui';
+import { Card, Column, Flex, Icon, Text, useTheme } from '@plocks/ui';
 
 const FEATURES = [
   {
@@ -19,7 +19,7 @@ const FEATURES = [
   {
     icon: 'bolt',
     title: '100+ components',
-    description: 'Platform Blocks ships everything from buttons to data tables and charts.',
+    description: 'plocks ships everything from buttons to data tables and charts.',
   },
 ] as const;
 
@@ -41,11 +41,11 @@ export function FeatureGrid() {
           style={{ flexBasis: 320, flexGrow: 1 }}
         >
           <Column gap="sm">
-            <Flex direction="row" align="center" gap="sm">
+            <Flex direction="row" ta="center" gap="sm">
               <Icon name={feature.icon} size={24} color={theme.colors.primary[6]} />
-              <Text variant="h4" weight="semibold">{feature.title}</Text>
+              <Text variant="h4" fw="semibold">{feature.title}</Text>
             </Flex>
-            <Text colorVariant="secondary">{feature.description}</Text>
+            <Text c="secondary">{feature.description}</Text>
           </Column>
         </Card>
       ))}

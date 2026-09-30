@@ -1,4 +1,4 @@
-import { PlatformBlocksProvider } from '@platform-blocks/ui';
+import { PlocksProvider } from '@plocks/ui';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import renderer, { act } from 'react-test-renderer';
 
@@ -15,9 +15,9 @@ describe('FeatureGrid', () => {
     await act(async () => {
       tree = renderer.create(
         <SafeAreaProvider initialMetrics={TEST_SAFE_AREA_METRICS}>
-          <PlatformBlocksProvider>
+          <PlocksProvider>
             <FeatureGrid />
-          </PlatformBlocksProvider>
+          </PlocksProvider>
         </SafeAreaProvider>
       );
     });

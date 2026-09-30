@@ -44,13 +44,13 @@ body {
 
 /* An explicit light/dark choice beats the OS preference above. The classes are
    stamped by the pre-hydration script below and kept in sync by the provider. */
-html.platform-blocks-light,
-html.platform-blocks-light body {
+html.plocks-light,
+html.plocks-light body {
   background-color: #fff;
 }
 
-html.platform-blocks-dark,
-html.platform-blocks-dark body {
+html.plocks-dark,
+html.plocks-dark body {
   background-color: #000;
 }
 
@@ -64,7 +64,7 @@ html.platform-blocks-dark body {
 /* Dark readers: hold the light-styled prerendered content invisible (dark
    backdrop only) until hydration restyles it. Removed by ContentReveal in
    app/_layout.tsx, or by the script's fallback timer. */
-html.platform-blocks-content-pending #root {
+html.plocks-content-pending #root {
   visibility: hidden;
 }
 `;
@@ -75,7 +75,7 @@ const themeScript = `
   var scheme = 'light';
   try {
     var saved = null;
-    try { saved = localStorage.getItem('platform-blocks-theme-mode'); } catch (storageError) {}
+    try { saved = localStorage.getItem('plocks-theme-mode'); } catch (storageError) {}
 
     if (saved === 'dark' || saved === 'light') {
       scheme = saved;
@@ -83,15 +83,15 @@ const themeScript = `
       scheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
-    root.classList.remove('platform-blocks-light', 'platform-blocks-dark');
-    root.classList.add('platform-blocks-' + scheme);
+    root.classList.remove('plocks-light', 'plocks-dark');
+    root.classList.add('plocks-' + scheme);
     root.style.colorScheme = scheme;
     root.style.backgroundColor = scheme === 'dark' ? '#000000' : '#ffffff';
 
     if (scheme === 'dark') {
-      root.classList.add('platform-blocks-content-pending');
+      root.classList.add('plocks-content-pending');
       setTimeout(function () {
-        root.classList.remove('platform-blocks-content-pending');
+        root.classList.remove('plocks-content-pending');
       }, 4000);
     }
   } catch (e) {

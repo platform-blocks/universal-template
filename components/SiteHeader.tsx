@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Flex, Text, useTheme } from '@platform-blocks/ui';
+import { Flex, Text, useTheme } from '@plocks/ui';
 
 import { ThemeToggle } from './ThemeToggle';
 
@@ -12,7 +12,7 @@ export function SiteHeader() {
   return (
     <Flex
       direction="row"
-      align="center"
+      ta="center"
       justify="space-between"
       px="lg"
       py="md"
@@ -24,14 +24,14 @@ export function SiteHeader() {
       }}
     >
       <Link href="/">
-        <Text variant="h4" weight="bold">Universal</Text>
+        <Text variant="h4" fw="bold">Universal</Text>
       </Link>
-      <Flex direction="row" align="center" gap="lg">
+      <Flex direction="row" ta="center" gap="lg">
         <Link href="/">
-          <Text weight="medium">Home</Text>
+          <Text fw="medium">Home</Text>
         </Link>
         <Link href="/about">
-          <Text weight="medium">About</Text>
+          <Text fw="medium">About</Text>
         </Link>
         <ThemeToggle />
       </Flex>

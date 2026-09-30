@@ -7,18 +7,17 @@ import {
   ThemeProvider as NavigationThemeProvider,
 } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
-  PlatformBlocksProvider,
+  PlocksProvider,
   useTheme,
   useThemeMode,
   type ThemeModeConfig,
-} from '@platform-blocks/ui';
+} from '@plocks/ui';
 
-const THEME_STORAGE_KEY = 'platform-blocks-theme-mode';
+const THEME_STORAGE_KEY = 'plocks-theme-mode';
 
 /**
- * Lifts the `platform-blocks-content-pending` class the pre-hydration script in
+ * Lifts the `plocks-content-pending` class the pre-hydration script in
  * app/+html.tsx stamps on <html> for dark-theme readers. The class is only ever
  * added when the script resolved the scheme to dark, so this waits until the
  * provider has actually rendered the dark theme before revealing — dark-mode
@@ -33,14 +32,14 @@ function ContentReveal() {
       return;
     }
     const root = document.documentElement;
-    if (!root.classList.contains('platform-blocks-content-pending')) {
+    if (!root.classList.contains('plocks-content-pending')) {
       return;
     }
     if (actualColorScheme !== 'dark') {
       return;
     }
     const reveal = () => {
-      root.classList.remove('platform-blocks-content-pending');
+      root.classList.remove('plocks-content-pending');
     };
     if (typeof requestAnimationFrame === 'function') {
       const frame = requestAnimationFrame(reveal);
@@ -56,7 +55,7 @@ function ContentReveal() {
 }
 
 /**
- * Feeds the Platform Blocks theme into React Navigation so navigator-owned
+ * Feeds the plocks theme into React Navigation so navigator-owned
  * surfaces (scene background, headers, the tab bar's defaults) follow the same
  * light/dark scheme as the components instead of Navigation's built-in themes.
  */
@@ -114,14 +113,12 @@ export default function RootLayout() {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <PlatformBlocksProvider themeModeConfig={themeModeConfig}>
-        <ContentReveal />
-        <StatusBar style="auto" />
-        <NavigationThemeBridge>
-          <Stack screenOptions={{ headerShown: false }} />
-        </NavigationThemeBridge>
-      </PlatformBlocksProvider>
-    </SafeAreaProvider>
+    <PlocksProvider themeModeConfig={themeModeConfig}>
+      <ContentReveal />
+      <StatusBar style="auto" />
+      <NavigationThemeBridge>
+        <Stack screenOptions={{ headerShown: false }} />
+      </NavigationThemeBridge>
+    </PlocksProvider>
   );
 }

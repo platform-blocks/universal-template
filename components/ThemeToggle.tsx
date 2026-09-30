@@ -1,4 +1,4 @@
-import { IconButton, useThemeMode } from '@platform-blocks/ui';
+import { IconButton, useThemeMode } from '@plocks/ui';
 
 const MODE_ICON = {
   light: 'sun',
