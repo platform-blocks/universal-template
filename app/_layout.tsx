@@ -1,3 +1,4 @@
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useEffect, useMemo, type ReactNode } from 'react';
 import { Platform } from 'react-native';
 import {
@@ -113,12 +114,14 @@ export default function RootLayout() {
   }, []);
 
   return (
-    <PlocksProvider themeModeConfig={themeModeConfig}>
-      <ContentReveal />
-      <StatusBar style="auto" />
-      <NavigationThemeBridge>
-        <Stack screenOptions={{ headerShown: false }} />
-      </NavigationThemeBridge>
-    </PlocksProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <PlocksProvider themeModeConfig={themeModeConfig}>
+        <ContentReveal />
+        <StatusBar style="auto" />
+        <NavigationThemeBridge>
+          <Stack screenOptions={{ headerShown: false }} />
+        </NavigationThemeBridge>
+      </PlocksProvider>
+    </GestureHandlerRootView>
   );
 }

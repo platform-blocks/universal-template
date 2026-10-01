@@ -41,7 +41,7 @@ export function FeatureGrid() {
           style={{ flexBasis: 320, flexGrow: 1 }}
         >
           <Column gap="sm">
-            <Flex direction="row" ta="center" gap="sm">
+            <Flex direction="row" align="center" gap="sm">
               <Icon name={feature.icon} size={24} color={theme.colors.primary[6]} />
               <Text variant="h4" fw="semibold">{feature.title}</Text>
             </Flex>

@@ -12,7 +12,7 @@ export function SiteHeader() {
   return (
     <Flex
       direction="row"
-      ta="center"
+      align="center"
       justify="space-between"
       px="lg"
       py="md"
@@ -26,7 +26,7 @@ export function SiteHeader() {
       <Link href="/">
         <Text variant="h4" fw="bold">Universal</Text>
       </Link>
-      <Flex direction="row" ta="center" gap="lg">
+      <Flex direction="row" align="center" gap="lg">
         <Link href="/">
           <Text fw="medium">Home</Text>
         </Link>
